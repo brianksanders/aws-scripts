@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# List all buckets
+BUCKETS=$(aws s3api list-buckets --query "Buckets[].Name" --output text)
+
+# Iterate through each bucket and attempt to delete
+for BUCKET in $BUCKETS; do
+    echo "Attempting to delete bucket: $BUCKET"
+    
+    # Attempt to delete the bucket
+    aws s3api delete-bucket --bucket "$BUCKET" 2>/dev/null
+    
+    # Check if the bucket was deleted or if it failed
+    if [ $? -eq 0 ]; then
+        echo "Bucket deleted: $BUCKET"
+    else
+        echo "Failed to delete bucket: $BUCKET (likely not empty)"
+    fi
+done

@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Variables
-VPC_ID="<VPC_ID>" #Add the VPC ID here. This is the only required input.
+VPC_ID="<your-vpc-id>" #Add the VPC ID here. This is the only required user input.
+
 PUBLIC_SUBNET_ID=$(aws ec2 describe-subnets \
     --filters "Name=tag:Name,Values=*public*" \
     --query "Subnets[*].SubnetId" \

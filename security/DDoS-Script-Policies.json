@@ -1,0 +1,40 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<your-bucket-name>",
+                "arn:aws:s3:::<your-bucket-name>/*"
+            ]
+        }
+    ]
+},
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "sns:Publish",
+            "Resource": "<your-sns-topic-ARN>"
+        }
+    ]
+},
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "wafv2:GetIPSet",
+                "wafv2:UpdateIPSet",
+                "wafv2:ListIPSets"
+            ],
+            "Resource": "arn:aws:wafv2:us-east-1:527274894823:regional/ipset/DDoSBlockedIps/<your-ipset-id-number>"
+        }
+    ]
+}

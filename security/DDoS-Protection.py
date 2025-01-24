@@ -11,7 +11,7 @@ WAFV2_CLIENT = boto3.client("wafv2")  # AWS WAFv2 API
 # Configuration
 S3_BUCKET = "<your-alb-logging-bucket-name>"
 SNS_TOPIC_ARN = "<your-sns-topic-arn>"
-REQUEST_THRESHOLD = 10  # Adjust threshold as needed
+RPS_THRESHOLD = 5  # Adjust threshold as needed
 WAF_IP_SET_ID = "<IPset ID number>"  # Replace with your AWS WAF IP Set ID number, NOT the name. 
 WAF_SCOPE = "REGIONAL"  # Change to CLOUDFRONT if applied to CloudFront
 WAF_REGION = "us-east-1"  # Change to your region
